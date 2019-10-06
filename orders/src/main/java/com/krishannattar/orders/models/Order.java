@@ -1,5 +1,7 @@
 package com.krishannattar.orders.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import javax.persistence.*;
 
 @Entity
@@ -11,14 +13,26 @@ public class Order {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long ordnum;
 
+    //    ORDAMOUNT double
+    private double ordamount;
 
-//    ORDAMOUNT double
+    //    ADVANCEAMOUNT double
+    private double advanceamount;
 
-//    ADVANCEAMOUNT double
+    //    CUSTCODE Long foreign key (one customer to many orders) not null
+    @ManyToOne
+    @JoinColumn(name = "custcode",
+    nullable = false)
+    @JsonIgnoreProperties("orders")
+    private Customer customer;
 
-//    CUSTCODE Long foreign key (one customer to many orders) not null
+    //    ORDDESCRIPTION String
+    private String orddescription;
 
-//    ORDDESCRIPTION String
+    public Order()
+    {
+
+    }
 
 
 }
