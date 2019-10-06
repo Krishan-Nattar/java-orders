@@ -22,19 +22,58 @@ public class Order {
     //    CUSTCODE Long foreign key (one customer to many orders) not null
     @ManyToOne
     @JoinColumn(name = "custcode",
-    nullable = false)
+            nullable = false)
     @JsonIgnoreProperties("orders")
     private Customer customer;
 
     //    ORDDESCRIPTION String
     private String orddescription;
 
-    public Order()
-    {
+    public Order() {
 
     }
 
+    public Order(double ordamount, double advanceamount, String orddescription) {
+        this.ordamount = ordamount;
+        this.advanceamount = advanceamount;
+        this.orddescription = orddescription;
+    }
 
+    public long getOrdnum() {
+        return ordnum;
+    }
+
+    public double getOrdamount() {
+        return ordamount;
+    }
+
+    public void setOrdamount(double ordamount) {
+        this.ordamount = ordamount;
+    }
+
+    public double getAdvanceamount() {
+        return advanceamount;
+    }
+
+    public void setAdvanceamount(double advanceamount) {
+        this.advanceamount = advanceamount;
+    }
+
+    public Customer getCustomer() {
+        return customer;
+    }
+
+    public void setCustomer(Customer customer) {
+        this.customer = customer;
+    }
+
+    public String getOrddescription() {
+        return orddescription;
+    }
+
+    public void setOrddescription(String orddescription) {
+        this.orddescription = orddescription;
+    }
 }
 
 
