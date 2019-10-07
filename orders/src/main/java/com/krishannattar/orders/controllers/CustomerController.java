@@ -44,7 +44,7 @@ public class CustomerController {
     public ResponseEntity<?> addNewCustomer(@Valid @RequestBody Customer newCustomer) throws URISyntaxException {
         newCustomer = customerService.save(newCustomer);
         HttpHeaders responseHeaders = new HttpHeaders();
-        URI newCustomerURI = ServletUriComponentsBuilder.fromCurrentRequest().path("/{custname}").buildAndExpand(newCustomer.getCustname()).toUri();
+        URI newCustomerURI = ServletUriComponentsBuilder.fromHttpUrl("http://localhost:2019/customer/name").path("/{custname}").buildAndExpand(newCustomer.getCustname()).toUri();
         responseHeaders.setLocation(newCustomerURI);
         return new ResponseEntity<>(null, responseHeaders, HttpStatus.CREATED);
     }
