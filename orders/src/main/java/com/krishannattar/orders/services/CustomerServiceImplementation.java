@@ -41,7 +41,7 @@ public class CustomerServiceImplementation implements CustomerService {
     @Override
     public Customer save(Customer customer) {
 
-        Customer newCustomer = new Customer;
+        Customer newCustomer = new Customer();
         newCustomer.setAgent(customer.getAgent());
         newCustomer.setCustcity(customer.getCustcity());
         newCustomer.setCustcountry(customer.getCustcountry());
@@ -65,7 +65,63 @@ public class CustomerServiceImplementation implements CustomerService {
 
     @Override
     public Customer update(Customer customer, long custcode) {
-        return null;
+
+        Customer currentCustomer = customerRepos.findById(custcode)
+                .orElseThrow(()->new EntityNotFoundException(Long.toString(custcode)));
+
+        if(customer.getAgent() != null)
+        {
+            currentCustomer.setAgent(customer.getAgent());
+        }
+        if(customer.getCustcity() != null)
+        {
+            currentCustomer.setCustcity(customer.getCustcity());
+        }
+        if(customer.getCustcountry() != null)
+        {
+            currentCustomer.setCustcountry(customer.getCustcountry());
+        }
+        if(customer.getCustname() != null)
+        {
+            currentCustomer.setCustname(customer.getCustname());
+        }
+        if(customer.getGrade() != null)
+        {
+            currentCustomer.setGrade(customer.getGrade());
+        }
+        if(customer.getOpeningamt() != null)
+        {
+            currentCustomer.setOpeningamt(customer.getOpeningamt());
+        }
+        if(customer.getOutstandingamt() != null)
+        {
+            currentCustomer.setOutstandingamt(customer.getOutstandingamt());
+        }
+        if(customer.getPaymentamt() != null)
+        {
+            currentCustomer.setPaymentamt(customer.getPaymentamt());
+        }
+        if(customer.getPhone() != null)
+        {
+            currentCustomer.setPhone(customer.getPhone());
+        }
+        if(customer.getWorkingarea() != null)
+        {
+            currentCustomer.setWorkingarea(customer.getWorkingarea());
+        }
+        if(customer.getReceiveamt() != null)
+        {
+            currentCustomer.setReceiveamt(customer.getReceiveamt());
+        }
+
+        if(customer.getOrders().size() > 0)
+        {
+            for(Order o: customer.getOrders())
+            {
+                currentCustomer.getOrders().add(new Order(o.getOrdamount(),o.getAdvanceamount(),o.getOrddescription(), currentCustomer));
+            }
+        }
+        return customerRepos.save(currentCustomer);
     }
 
     @Override

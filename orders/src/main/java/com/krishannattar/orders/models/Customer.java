@@ -32,16 +32,16 @@ public class Customer {
     private String grade;
 
     //    OPENINGAMT double
-    private double openingamt;
+    private Double openingamt;
 
     //    RECEIVEAMT double
-    private double receiveamt;
+    private Double receiveamt;
 
     //    PAYMENTAMT double
-    private double paymentamt;
+    private Double paymentamt;
 
     //    OUTSTANDINGAMT double
-    private double outstandingamt;
+    private Double outstandingamt;
 
     //    PHONE String
     private String phone;
@@ -62,7 +62,7 @@ public class Customer {
         //obligatory default constructor for JPA
     }
 
-    public Customer(String custname, String custcity, String workingarea, String custcountry, String grade, double openingamt, double receiveamt, double paymentamt, double outstandingamt, String phone, Agent agent) {
+    public Customer(String custname, String custcity, String workingarea, String custcountry, String grade, Double openingamt, Double receiveamt, Double paymentamt, double outstandingamt, String phone, Agent agent) {
         this.custname = custname;
         this.custcity = custcity;
         this.workingarea = workingarea;
@@ -125,7 +125,7 @@ public class Customer {
         this.grade = grade;
     }
 
-    public double getOpeningamt() {
+    public Double getOpeningamt() {
         return openingamt;
     }
 
@@ -133,7 +133,7 @@ public class Customer {
         this.openingamt = openingamt;
     }
 
-    public double getReceiveamt() {
+    public Double getReceiveamt() {
         return receiveamt;
     }
 
@@ -141,7 +141,7 @@ public class Customer {
         this.receiveamt = receiveamt;
     }
 
-    public double getPaymentamt() {
+    public Double getPaymentamt() {
         return paymentamt;
     }
 
@@ -149,7 +149,7 @@ public class Customer {
         this.paymentamt = paymentamt;
     }
 
-    public double getOutstandingamt() {
+    public Double getOutstandingamt() {
         return outstandingamt;
     }
 
