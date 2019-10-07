@@ -33,14 +33,20 @@ public class Order {
 
     }
 
-    public Order(double ordamount, double advanceamount, String orddescription) {
+    public Order(double ordamount, double advanceamount, String orddescription, Customer customer) {
         this.ordamount = ordamount;
         this.advanceamount = advanceamount;
         this.orddescription = orddescription;
+        this.customer = customer;
     }
 
     public long getOrdnum() {
         return ordnum;
+    }
+
+    public void setOrdnum(long ordnum)
+    {
+        this.ordnum = ordnum;
     }
 
     public double getOrdamount() {

@@ -16,8 +16,7 @@ public class Customer {
     private long custcode;
 
     //    CUSTNAME String, not null
-    @Column(unique = true,
-            nullable = false)
+    @Column(nullable = false)
     private String custname;
 
     //    CUSTCITY String
@@ -63,7 +62,7 @@ public class Customer {
         //obligatory default constructor for JPA
     }
 
-    public Customer(String custname, String custcity, String workingarea, String custcountry, String grade, double openingamt, double receiveamt, double paymentamt, double outstandingamt, String phone) {
+    public Customer(String custname, String custcity, String workingarea, String custcountry, String grade, double openingamt, double receiveamt, double paymentamt, double outstandingamt, String phone, Agent agent) {
         this.custname = custname;
         this.custcity = custcity;
         this.workingarea = workingarea;
@@ -74,11 +73,16 @@ public class Customer {
         this.paymentamt = paymentamt;
         this.outstandingamt = outstandingamt;
         this.phone = phone;
+        this.agent = agent;
     }
 
 
     public long getCustcode() {
         return custcode;
+    }
+
+    public void setCustcode(long custcode){
+        this.custcode = custcode;
     }
 
     public String getCustname() {

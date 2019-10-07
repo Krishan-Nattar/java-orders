@@ -54,6 +54,11 @@ public class Agent {
         return agentcode;
     }
 
+    public void setAgentcode(long agentcode)
+    {
+        this.agentcode = agentcode;
+    }
+
     public String getAgentname() {
         return agentname;
     }
