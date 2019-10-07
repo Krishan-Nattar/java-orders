@@ -30,7 +30,7 @@ public class Agent {
     //    COUNTRY string
     private String country;
 
-    @OneToMany(mappedBy = "agents",
+    @OneToMany(mappedBy = "agent",
     cascade = CascadeType.ALL,
     orphanRemoval = true)
     @JsonIgnoreProperties("agent")

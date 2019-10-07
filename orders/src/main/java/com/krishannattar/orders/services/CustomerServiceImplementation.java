@@ -28,7 +28,7 @@ public class CustomerServiceImplementation implements CustomerService {
     @Override
     public Customer findCustomerByName(String custname) {
 
-        Customer returnCustomer = customerRepos.findByName(custname);
+        Customer returnCustomer = customerRepos.findByCustname(custname);
 
         if (returnCustomer==null)
         {

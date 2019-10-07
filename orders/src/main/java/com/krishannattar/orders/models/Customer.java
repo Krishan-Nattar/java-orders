@@ -52,7 +52,7 @@ public class Customer {
     @JsonIgnoreProperties("customers")
     private Agent agent;
 
-    @OneToMany(mappedBy = "customers",
+    @OneToMany(mappedBy = "customer",
             cascade = CascadeType.ALL,
             orphanRemoval = true)
     @JsonIgnoreProperties("customer")
