@@ -38,6 +38,7 @@ public class CustomerServiceImplementation implements CustomerService {
         return returnCustomer;
     }
 
+    @Transactional
     @Override
     public Customer save(Customer customer) {
 
@@ -126,6 +127,10 @@ public class CustomerServiceImplementation implements CustomerService {
 
     @Override
     public void delete(long custcode) {
-
+        if(customerRepos.findById(custcode).isPresent()){
+            customerRepos.deleteById(custcode);
+        } else {
+            throw new EntityNotFoundException("Cannot delete customer with ID: " + custcode);
+        }
     }
 }
