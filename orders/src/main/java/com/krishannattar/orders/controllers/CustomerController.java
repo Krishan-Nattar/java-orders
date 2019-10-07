@@ -23,18 +23,16 @@ public class CustomerController {
     //http://localhost:2019/customer/order+
 
     @GetMapping(value = "/customer/order",
-    produces = {"application/json"})
-    public ResponseEntity<?> listAllCustomers()
-    {
+            produces = {"application/json"})
+    public ResponseEntity<?> listAllCustomers() {
         List<Customer> myCustomers = customerService.findAll();
         return new ResponseEntity<>(myCustomers, HttpStatus.OK);
     }
 
     //http://localhost:2019/customer/name/{custname}
     @GetMapping(value = "/customer/name/{custname}",
-    produces = {"application/json"})
-    public ResponseEntity<?> findCustomerByName(@PathVariable String custname)
-    {
+            produces = {"application/json"})
+    public ResponseEntity<?> findCustomerByName(@PathVariable String custname) {
         Customer returnCustomer = customerService.findCustomerByName(custname);
         return new ResponseEntity<>(returnCustomer, HttpStatus.OK);
     }
@@ -42,9 +40,8 @@ public class CustomerController {
 
     //http://localhost:2019/data/customer/new
     @PostMapping(value = "/data/customer/new",
-    produces = {"application/json"})
-    public ResponseEntity<?> addNewCustomer(@Valid @RequestBody Customer newCustomer) throws URISyntaxException
-    {
+            produces = {"application/json"})
+    public ResponseEntity<?> addNewCustomer(@Valid @RequestBody Customer newCustomer) throws URISyntaxException {
         newCustomer = customerService.save(newCustomer);
         HttpHeaders responseHeaders = new HttpHeaders();
         URI newCustomerURI = ServletUriComponentsBuilder.fromCurrentRequest().path("/{custname}").buildAndExpand(newCustomer.getCustname()).toUri();
@@ -55,10 +52,9 @@ public class CustomerController {
 
     //http://localhost:2019/data/customer/update/{custcode}
     @PutMapping(value = "/data/customer/update/{custcode}",
-    produces = {"application/json"},
-    consumes = {"application/json"})
-    public ResponseEntity<?> updateCustomer(@RequestBody Customer updatedCustomer, @PathVariable long custcode)
-    {
+            produces = {"application/json"},
+            consumes = {"application/json"})
+    public ResponseEntity<?> updateCustomer(@RequestBody Customer updatedCustomer, @PathVariable long custcode) {
 
         customerService.update(updatedCustomer, custcode);
         return new ResponseEntity<>("Update Success", HttpStatus.OK);
@@ -67,9 +63,8 @@ public class CustomerController {
 
     //http://localhost:2019/data/customer/delete/{custcode}
     @DeleteMapping(value = "/data/customer/delete/{custcode}",
-    produces = {"application/json"})
-    public ResponseEntity<?> deleteCustomer(@PathVariable long custcode)
-    {
+            produces = {"application/json"})
+    public ResponseEntity<?> deleteCustomer(@PathVariable long custcode) {
         customerService.delete(custcode);
         return new ResponseEntity<>("Delete Successful", HttpStatus.OK);
     }
