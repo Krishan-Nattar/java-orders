@@ -66,6 +66,13 @@ public class CustomerController {
 
 
     //http://localhost:2019/data/customer/delete/{custcode}
+    @DeleteMapping(value = "/data/customer/delete/{custcode}",
+    produces = {"application/json"})
+    public ResponseEntity<?> deleteCustomer(@PathVariable long custcode)
+    {
+        customerService.delete(custcode);
+        return new ResponseEntity<>("Delete Successful", HttpStatus.OK);
+    }
 
 
 }
